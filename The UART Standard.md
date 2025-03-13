@@ -3,19 +3,19 @@
 - Has a redefined protocol for how data is framed, how data packets start and stop, and how the receiver oversamples the incoming data to recover the information sent.
 - Common baud rates being: 9600, 19200, 38400, 57600, 115200.
 
-![[BAUD_Rate_Picture.png]]
+![](BAUD_Rate_Picture.png)
 
 ## More on Baud Rate
 
 - Baud rate (BR) is the common data rate between Tx ad Rx; the fastest rate at which the data line changes states.
 - Baud rate for most applications is equivalent to bit rate, bits per second (bps).
 - The bit period T$_B$ is the amount of time the data is on the line.
-- The baud rate and bit period (T$_B$) are related by BR = 1/T$_B$ .
+- The baud rate and a bit period (T$_B$) are related by BR = 1/T$_B$ .
 - Baud rate must be set manually in both the Tx and Rx prior to data transmission (typical ranges is 9600 to 115200 baud).
 
 ## Link Types
 
-- A link is when two devices are connected together to stans information.
+- A link is when two devices are connected together to transfer information.
 
 There are three types of links:
 1. Simplex - Unidirectional. 1 wire/ channel, 1 direction.
@@ -27,14 +27,14 @@ There are three types of links:
 
 Framing is used to describe how the bits are arranged in the UART serial bit sequence.
 
-![[UART_Framing.png]]
+![](UART_Framing.png)
 
 - When the channel is not transmitting, it is held HIGH.
 - The first HIGH-to-LOW transition signifies the start of the frame. The channel then stays LOW for one T$_B$ .
 - After the data is sent, the channel returns to a HIGH for one T$_B$ .
 - Start bit is the initial symbol
 - The start data transmission, the Tx drives the line LOW and holds it there for one T$_B$ .
-- Typically is UART the LSB is sent first however that can be changed to sent the MSB first. LSB is least significant bit and MSB is most significant bit.
+- Typically, is UART the LSB is sent first however that can be changed to send the MSB first. LSB is the least significant bit and MSB is most significant bit.
 - The Tx and Rx must be set up in similar fashion to know how the data is coming in.
 - After the data has been transmitted (the 0's and 1's) the stop bit is then pulled HIGH to signify end of transmission.
 
@@ -42,7 +42,7 @@ Framing is used to describe how the bits are arranged in the UART serial bit seq
 
 The most common options that are configurable at least for the MSP430 are swapping the order in which the bits are sent, changing the data size between 7-bits and 8-bits, adding on address bit (AD), adding a parity bit (PA) and adding a second stop bit.
 
-![[Options_Bit_Framing.png]]
+![](Options_Bit_Framing.png)
 
 - When using transmit address, two frames are sent, one for data and one for address.
 - The AD bit signifies whether the next frame is the address or data.
@@ -61,13 +61,13 @@ How does the receiver determine what logic is sent if it doesn't have a clock?
 
 - Oversampling - using a receiver clock that is faster than the transmitter clock.
 
-![[Over_Sampling.png]]
+![](Over_Sampling.png)
 
 - The receiver clock will oversample 16 times the clock speed.
 - So for each bit period the receiver will sample 16 times (16 clocks).
 - For each bit period we will sample on half of the 16 (clocks) which would provide us a sample that is in the middle of the bit period which will provide us a good sample. This happens after the start bit. So for example 16 (start bit) + 8 will be 24. The 24th clock cycle on the receiver. Which will be in the middle of bit 0. And then after we sample every 16 clock cycles to get a sample in the middle of each bit period.
 
-![[Zoom_Over_Sampling.png]]
+![](Zoom_Over_Sampling.png)
 
 Sometimes there can be issues with this method because the Tx and Rx clock will be out of sync during long Tx and Rx transmission times.
 So there needs to be a period of rest between transmitting and receiving.
