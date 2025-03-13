@@ -22,13 +22,12 @@ There are three types of links:
 2. Full-Duplex = 2 wires / channels two directions. For example 1 wire / channel will be Tx, and the other wire / Channel will be used for Rx.
 3. Half-Duplex = 2 directions, 1 channel. For example there will be one wire that is bidirectional. The single wire / channel will be used for both Tx and Rx. The con of this set up is that the wire can only be used for either Tx or Rx at any given moment. Tx and Rx can not be used at the same time.
 
-![[Pasted image 20250313015929.png]]
-
+![[Link_Types.png]]
 ## Framing
 
 Framing is used to describe how the bits are arranged in the UART serial bit sequence.
 
-![[Pasted image 20250313020247.png]]
+![[UART_Framing.png]]
 
 - When the channel is not transmitting, it is held HIGH.
 - The first HIGH-to-LOW transition signifies the start of the frame. The channel then stays LOW for one T$_B$ .
@@ -43,7 +42,7 @@ Framing is used to describe how the bits are arranged in the UART serial bit seq
 
 The most common options that are configurable at least for the MSP430 are swapping the order in which the bits are sent, changing the data size between 7-bits and 8-bits, adding on address bit (AD), adding a parity bit (PA) and adding a second stop bit.
 
-![[Pasted image 20250313021145.png]]
+![[Options_Bit_Framing.png]]
 
 - When using transmit address, two frames are sent, one for data and one for address.
 - The AD bit signifies whether the next frame is the address or data.
@@ -62,13 +61,13 @@ How does the receiver determine what logic is sent if it doesn't have a clock?
 
 - Oversampling - using a receiver clock that is faster than the transmitter clock.
 
-![[Pasted image 20250313022531.png]]
+![[Over_Sampling.png]]
 
 - The receiver clock will oversample 16 times the clock speed.
 - So for each bit period the receiver will sample 16 times (16 clocks).
 - For each bit period we will sample on half of the 16 (clocks) which would provide us a sample that is in the middle of the bit period which will provide us a good sample. This happens after the start bit. So for example 16 (start bit) + 8 will be 24. The 24th clock cycle on the receiver. Which will be in the middle of bit 0. And then after we sample every 16 clock cycles to get a sample in the middle of each bit period.
 
-![[Pasted image 20250313023450.png]]
+![[Zoom_Over_Sampling.png]]
 
 Sometimes there can be issues with this method because the Tx and Rx clock will be out of sync during long Tx and Rx transmission times.
 So there needs to be a period of rest between transmitting and receiving.
