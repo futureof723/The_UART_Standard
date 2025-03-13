@@ -1,3 +1,5 @@
+# The UART Standard
+
 - Universal asynchronous receiver/transmitter - an approach to serial communication between two devices in which neither device shares a common clock.
 - Each device only uses lines for data.
 - Has a redefined protocol for how data is framed, how data packets start and stop, and how the receiver oversamples the incoming data to recover the information sent.
