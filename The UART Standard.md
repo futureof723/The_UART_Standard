@@ -2,7 +2,7 @@
 
 - Universal asynchronous receiver/transmitter - an approach to serial communication between two devices in which neither device shares a common clock.
 - Each device only uses lines for data.
-- Has a redefined protocol for how data is framed, how data packets start and stop, and how the receiver oversamples the incoming data to recover the information sent.
+- Has a predefined protocol for how data is framed, how data packets start and stop, and how the receiver oversamples the incoming data to recover the information sent.
 - Common baud rates being: 9600, 19200, 38400, 57600, 115200.
 
 ![](BAUD_Rate_Picture.png)
