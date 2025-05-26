@@ -24,7 +24,7 @@ There are three types of links:
 2. Full-Duplex = 2 wires / channels two directions. For example 1 wire / channel will be Tx, and the other wire / Channel will be used for Rx.
 3. Half-Duplex = 2 directions, 1 channel. For example there will be one wire that is bidirectional. The single wire / channel will be used for both Tx and Rx. The con of this set up is that the wire can only be used for either Tx or Rx at any given moment. Tx and Rx can not be used at the same time.
 
-![[Link_Types.png]]
+![](Link_Types.png)
 ## Framing
 
 Framing is used to describe how the bits are arranged in the UART serial bit sequence.
