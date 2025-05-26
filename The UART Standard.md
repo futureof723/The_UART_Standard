@@ -9,7 +9,7 @@
 
 ## More on Baud Rate
 
-- Baud rate (BR) is the common data rate between Tx ad Rx; the fastest rate at which the data line changes states.
+- Baud rate (BR) is the common data rate between Tx and Rx; the fastest rate at which the data line changes states.
 - Baud rate for most applications is equivalent to bit rate, bits per second (bps).
 - The bit period T$_B$ is the amount of time the data is on the line.
 - The baud rate and a bit period (T$_B$) are related by BR = 1/T$_B$ .
